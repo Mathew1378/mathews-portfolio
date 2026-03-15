@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ───────────── Global Reset & Base ───────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168, 85, 247, 0.4) transparent;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #050510;
+  color: #e2e8f0;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ───────────── Custom Scrollbar ───────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a855f7, #3b82f6, #06b6d4);
+  border-radius: 10px;
+}
+
+/* ───────────── Selection ───────────── */
+::selection {
+  background: rgba(168, 85, 247, 0.3);
+  color: #fff;
+}
+
+/* ───────────── Glassmorphism Utilities ───────────── */
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(168, 85, 247, 0.3);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.15), 0 0 60px rgba(59, 130, 246, 0.08);
+    transform: translateY(-4px);
+  }
+
+  /* ───────────── Neon Text ───────────── */
+  .text-gradient {
+    background: linear-gradient(135deg, #a855f7, #3b82f6, #06b6d4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-reverse {
+    background: linear-gradient(315deg, #a855f7, #3b82f6, #06b6d4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ───────────── Neon Borders ───────────── */
+  .neon-border {
+    position: relative;
+  }
+
+  .neon-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #a855f7, #3b82f6, #06b6d4);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .neon-border:hover::before {
+    opacity: 1;
+  }
+
+  /* ───────────── Glow Button ───────────── */
+  .btn-glow {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(59, 130, 246, 0.15));
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 12px;
+    color: #e2e8f0;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  .btn-glow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #a855f7, #3b82f6, #06b6d4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  .btn-glow:hover {
+    border-color: transparent;
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.4), 0 0 50px rgba(59, 130, 246, 0.2);
+    transform: translateY(-2px);
+    color: #fff;
+  }
+
+  .btn-glow:hover::before {
+    opacity: 1;
+  }
+
+  .btn-glow-solid {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: linear-gradient(135deg, #a855f7, #3b82f6);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-glow-solid:hover {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.5), 0 0 60px rgba(59, 130, 246, 0.25);
+    transform: translateY(-2px);
+  }
+
+  /* ───────────── Section Heading ───────────── */
+  .section-heading {
+    position: relative;
+    display: inline-block;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .section-heading::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    margin-top: 12px;
+    background: linear-gradient(135deg, #a855f7, #3b82f6, #06b6d4);
+    border-radius: 2px;
+  }
+
+  /* ───────────── Ambient Glow Orbs ───────────── */
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.15;
+    pointer-events: none;
+  }
+}
+
+/* ───────────── Loading Screen ───────────── */
+@keyframes loader-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes loader-fade {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes loader-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* ───────────── Responsive Cursor Hiding ───────────── */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+  .btn-glow,
+  .btn-glow-solid {
+    cursor: pointer;
+  }
+}
+
+/* ───────────── Skill Bar Animation ───────────── */
+@keyframes skill-fill {
+  from { width: 0%; }
+  to { width: var(--skill-level); }
+}
+
+/* ───────────── Timeline Line glow ───────────── */
+@keyframes timeline-glow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(168, 85, 247, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  }
+}
