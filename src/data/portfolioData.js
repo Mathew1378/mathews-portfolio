@@ -35,7 +35,7 @@ export const personalInfo = {
   email: "nitinthomas45@gmail.com",
   phone: "+91 8971233168",
   location: "Bengaluru, Karnataka, India",
-  resumeUrl: "https://drive.google.com/file/d/1ccHla9ZjRBu0wvGFjd_2c3OI3Wh3BHkd/view?usp=sharing",
+  resumeUrl: "https://drive.google.com/file/d/1Xv7K0lL1-5OKhDZF886IPR0TgeJoO401/view?usp=drive_link",
   social: {
     linkedin: "https://www.linkedin.com/in/mathew-thomas-kovoor",
     github: "https://github.com/Mathew1378",
