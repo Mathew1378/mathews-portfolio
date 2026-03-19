@@ -38,7 +38,7 @@ export const personalInfo = {
   resumeUrl: "https://drive.google.com/file/d/1ccHla9ZjRBu0wvGFjd_2c3OI3Wh3BHkd/view?usp=sharing",
   social: {
     linkedin: "https://www.linkedin.com/in/mathew-thomas-kovoor",
-    github: "#",
+    github: "https://github.com/Mathew1378",
   },
 };
 
@@ -185,9 +185,9 @@ export const timelineData = [
   },
   {
     year: '2022 – 2025',
-    title: 'Bachelor of Computer Applications (BCA)',
+    title: 'Bachelor of Computer Applications (BCA) Cloud Computing',
     subtitle: 'CMR University, Bengaluru',
-    description: 'Completed BCA with a strong foundation in computer science, programming, databases, networking, and software engineering.',
+    description: 'Completed BCA with a strong foundation in computer science and specialization in Cloud Computing, programming, databases, networking, and software engineering.',
     icon: HiAcademicCap,
     type: 'education',
   },
@@ -195,7 +195,7 @@ export const timelineData = [
     year: '2022',
     title: 'Higher Secondary (12th)',
     subtitle: 'Kendriya Vidyalaya School',
-    description: 'Completed 12th standard education, building a foundation in science and mathematics.',
+    description: 'Completed 12th standard education in Commerce with IP (Informatic Practices).',
     icon: HiAcademicCap,
     type: 'education',
   },
@@ -211,6 +211,15 @@ export const timelineData = [
 
 // ─────────────── Certifications ───────────────
 export const certifications = [
+  {
+    title: 'Ethical Hacking Essentials',
+    issuer: 'EC-COUNCIL',
+    date: '2026',
+    icon: FaUserSecret,
+    color: '#9C27B0',
+    credentialUrl: '#',
+    certificationNumber: 'ECC0762351498',
+  },
   {
     title: 'CISCO Certified Support Technician – Cybersecurity',
     issuer: 'Certiport',
@@ -265,6 +274,6 @@ export const certifications = [
 export const stats = [
   { value: 4, label: 'Projects Completed', suffix: '' },
   { value: 11, label: 'Technologies Learned', suffix: '+' },
-  { value: 6, label: 'Certifications Earned', suffix: '' },
+  { value: 7, label: 'Certifications Earned', suffix: '' },
   { value: 3, label: 'Years of Learning', suffix: '+' },
 ];

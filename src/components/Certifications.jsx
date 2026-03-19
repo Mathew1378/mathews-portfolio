@@ -38,6 +38,13 @@ const CertCard = ({ cert, index, inView }) => {
       </h3>
       <p className="text-sm text-gray-400 mb-1">{cert.issuer}</p>
       <p className="text-xs text-gray-500 font-mono mb-4">{cert.date}</p>
+      
+      {/* Certification Number (if available) */}
+      {cert.certificationNumber && (
+        <p className="text-xs text-gray-500 font-mono mb-2">
+          ID: {cert.certificationNumber}
+        </p>
+      )}
 
       {/* Verify link */}
       <a
