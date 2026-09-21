@@ -97,6 +97,7 @@ const Hero = () => {
             href={personalInfo.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
+            download="Mathews_Kovoor_Resume.pdf"
             className="btn-glow"
           >
             <FaDownload className="text-sm" />

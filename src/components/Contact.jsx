@@ -23,16 +23,57 @@ const Contact = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [focused, setFocused] = useState('');
+  const [status, setStatus] = useState({ submitting: false, submitted: false, error: null });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real app, integrate with EmailJS or a backend
-    alert('Thank you for your message! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setStatus({ submitting: true, submitted: false, error: null });
+
+    const formElement = e.target;
+    const bodyData = new FormData();
+    bodyData.append('name', formData.name);
+    bodyData.append('email', formData.email);
+    bodyData.append('subject', formData.subject);
+    bodyData.append('message', formData.message);
+    bodyData.append('_subject', `New Portfolio Enquiry from ${formData.name}: ${formData.subject}`);
+    bodyData.append('_captcha', 'false');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/nitinthomas45@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: bodyData
+      });
+
+      const resText = await response.text();
+      let resJson = {};
+      try { resJson = JSON.parse(resText); } catch (e) {}
+
+      if (response.ok && resJson.success !== 'false') {
+        setStatus({ submitting: false, submitted: true, error: null });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        // Fallback: standard HTML form submission
+        formElement.action = 'https://formsubmit.co/nitinthomas45@gmail.com';
+        formElement.method = 'POST';
+        formElement.submit();
+      }
+    } catch (err) {
+      // Fallback if network/adblocker blocks fetch
+      try {
+        formElement.action = 'https://formsubmit.co/nitinthomas45@gmail.com';
+        formElement.method = 'POST';
+        formElement.submit();
+      } catch (submitErr) {
+        setStatus({ submitting: false, submitted: false, error: 'Failed to submit form. Please email directly to nitinthomas45@gmail.com' });
+      }
+    }
   };
 
   return (
@@ -125,7 +166,25 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-3"
           >
-            <form onSubmit={handleSubmit} className="glass-card p-6 sm:p-8 space-y-5">
+            <form 
+              action="https://formsubmit.co/nitinthomas45@gmail.com" 
+              method="POST" 
+              onSubmit={handleSubmit} 
+              className="glass-card p-6 sm:p-8 space-y-5"
+            >
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              {status.submitted && (
+                <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 text-sm font-mono">
+                  ✓ Thank you! Your enquiry has been sent directly to my inbox. I'll reply soon.
+                </div>
+              )}
+              {status.error && (
+                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm font-mono">
+                  ✕ {status.error}
+                </div>
+              )}
+
               <div className="grid sm:grid-cols-2 gap-5">
                 {/* Name */}
                 <div className="relative">
@@ -223,12 +282,13 @@ const Contact = () => {
               {/* Submit */}
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="btn-glow-solid w-full justify-center py-3.5 text-base"
+                disabled={status.submitting}
+                whileHover={{ scale: status.submitting ? 1 : 1.02 }}
+                whileTap={{ scale: status.submitting ? 1 : 0.98 }}
+                className="btn-glow-solid w-full justify-center py-3.5 text-base disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <FaPaperPlane />
-                Send Message
+                {status.submitting ? 'Sending...' : 'Send Message'}
               </motion.button>
             </form>
           </motion.div>

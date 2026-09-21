@@ -35,7 +35,7 @@ export const personalInfo = {
   email: "nitinthomas45@gmail.com",
   phone: "+91 8971233168",
   location: "Bengaluru, Karnataka, India",
-  resumeUrl: "https://drive.google.com/file/d/1Xv7K0lL1-5OKhDZF886IPR0TgeJoO401/view?usp=drive_link",
+  resumeUrl: "/resume.pdf",
   social: {
     linkedin: "https://www.linkedin.com/in/mathew-thomas-kovoor",
     github: "https://github.com/Mathew1378",
@@ -135,6 +135,60 @@ export const skillCategories = [
 
 // ─────────────── Projects Data ───────────────
 export const projects = [
+  {
+    title: 'Media Team Management System',
+    description: 'An academic system designed to streamline media-team operations, including event registration, task assignment, approval workflows, media tracking, and report generation.',
+    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'SQLite', 'Prisma', 'Google Drive API'],
+    image: null,
+    category: 'Web App',
+    year: '2026',
+    highlights: ['RBAC & Custom Authentication', 'Event registration & approval workflows', 'PDF & Docx report generation'],
+  },
+  {
+    title: 'Student Management System',
+    description: 'Developed a Python/Django-based student management system with MSSQL integration, supporting structured student records, course management, enrollment, attendance, grades, and data-driven application workflows.',
+    technologies: ['Python', 'Django', 'MSSQL', 'PDF Export', 'Excel Export'],
+    image: null,
+    category: 'Web App',
+    year: '2024',
+    highlights: ['Structured student & course management', 'Enrollment & grade tracking', 'PDF & Excel data export'],
+  },
+  {
+    title: 'Signature Antivirus for Malware Detection',
+    description: 'Developed a signature-based antivirus solution for identifying known malware by analyzing files against predefined malware signatures and implementing basic detection and security mechanisms.',
+    technologies: ['Python', 'Cybersecurity', 'Malware Analysis', 'Hashing'],
+    image: null,
+    category: 'Cybersecurity',
+    year: '2026',
+    highlights: ['Signature-based threat detection', 'File integrity & pattern matching', 'Security rule enforcement'],
+  },
+  {
+    title: 'Packet Sniffer and ARP Spoofing Detector',
+    description: 'Developed a network security tool for capturing and analyzing network packets and detecting potential ARP spoofing activities to identify suspicious network communication.',
+    technologies: ['Python', 'Network Security', 'Scapy', 'Packet Analysis'],
+    image: null,
+    category: 'Cybersecurity',
+    year: '2026',
+    highlights: ['Real-time network packet capturing', 'ARP spoofing & poisoning detection', 'Suspicious traffic alerting'],
+  },
+  {
+    title: 'Encryption and Decryption Tool',
+    description: 'Developed a security utility for encrypting and decrypting data using cryptographic techniques, focusing on secure data handling and demonstrating fundamental concepts of information security.',
+    technologies: ['Python', 'Cryptography', 'AES/RSA', 'Security'],
+    image: null,
+    category: 'Cybersecurity',
+    year: '2026',
+    highlights: ['Symmetric & asymmetric encryption', 'Secure data handling & hashing', 'Cryptographic key management'],
+  },
+  {
+    title: 'Personal Portfolio',
+    description: 'Developed a personal portfolio website to showcase academic projects, technical skills, internships, achievements, and professional experience through a responsive web interface.',
+    technologies: ['React', 'JavaScript', 'Tailwind CSS', 'Vite', 'Framer Motion'],
+    image: null,
+    category: 'Web App',
+    year: '2026',
+    highlights: ['Responsive glassmorphism UI', 'Interactive cyber-theme animations', 'Hosted & deployed on Vercel'],
+  },
   {
     title: 'Integrated Library Management System',
     description: 'A comprehensive Java Swing-based desktop application for library management featuring book cataloging, member registration, book issue/return tracking, and fine calculation. Connected to a relational database (MySQL) for persistent data storage and retrieval.',
@@ -272,8 +326,9 @@ export const certifications = [
 
 // ─────────────── Stats ───────────────
 export const stats = [
-  { value: 4, label: 'Projects Completed', suffix: '' },
+  { value: 10, label: 'Projects Completed', suffix: '' },
   { value: 11, label: 'Technologies Learned', suffix: '+' },
   { value: 7, label: 'Certifications Earned', suffix: '' },
   { value: 3, label: 'Years of Learning', suffix: '+' },
 ];
+

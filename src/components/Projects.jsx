@@ -9,6 +9,7 @@ const categoryColors = {
   IoT: '#06b6d4',
   'Desktop App': '#a855f7',
   'Web App': '#f59e0b',
+  Cybersecurity: '#00E676',
 };
 
 const ProjectCard = ({ project, index, onClick, inView }) => (
